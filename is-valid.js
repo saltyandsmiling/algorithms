@@ -21,11 +21,46 @@ bst.add(1);
 bst.add(4);
 
 /*
-
+depth first search
+track the upper or lower limit of the previous
+sub trees can be validated as you move down
  */
 
 function isValid(treeRoot) {
+  const queue = [];
+
+  queue[0] = {
+    node: treeRoot,
+    upperBound: Infinity,
+    lowerBound: -Infinity
+  };
+
+  while (queue.length) {
+    const current = queue.shift();
+
+    if (current.value > current.upperBound || current.value < current.lowerBound) {
+      return false;
+    }
+
+    if (current.node.left) {
+      queue.push({
+        node: current.node.left,
+        upperBound: current.value,
+        lowerBound: current.lowerBound
+      })
+    }
+
+    if (current.node.right) {
+      queue.push({
+        node: current.node.right,
+        upperBound: current.upperBound,
+        lowerBound: current.value
+      })
+    }
+  }
+
+  return true;
 
 }
 
-isValid(bst);
+console.log(isValid(bst));
