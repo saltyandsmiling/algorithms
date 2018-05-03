@@ -13,33 +13,41 @@ BinarySearchTree.prototype.add = function(value) {
 };
 
 const bst = new BinarySearchTree(5);
-bst.add(2);
-bst.add(3);
-bst.add(7);
 bst.add(6);
+bst.add(100);
+bst.add(7);
+bst.add(50);
+bst.add(8);
+bst.add(65);
+
+/*
+go all the way to the rig ht and hold on to the second to last value
+if the right most item doesn't have a left
+ */
 
 function secondLargest(bst) {
-  const stack = [];
-  let high = bst.value;
-  let second = null;
-  stack[0] = bst;
+  if (!bst.left && !bst.right) console.log('error');
 
-  while (stack.length) {
-    let node = stack.pop();
+  let node = bst;
+  let secondLargestValue = bst.left.value || bst.value;
 
-    if (node.value > high) {
-      second = high;
-      high = node.value;
-    }
-
-    if (node.value > second && node.value < high) second = node.value;
-
-    if (node.left) stack.push(node.left);
-    if (node.right) stack.push(node.right);
+  while (node.right) {
+    secondLargestValue = node.value;
+    node = node.right;
   }
 
-console.log(second)
+  if (node.left) {
+    node = node.left;
+    secondLargestValue = node.value;
+    while (node.right) {
+      node = node.right;
+      secondLargestValue = node.value;
+    }
+  } else {
+    return secondLargestValue;
+  }
 
+  console.log(secondLargestValue)
 }
 
 secondLargest(bst);
