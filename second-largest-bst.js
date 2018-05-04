@@ -26,28 +26,7 @@ if the right most item doesn't have a left
  */
 
 function secondLargest(bst) {
-  if (!bst.left && !bst.right) console.log('error');
 
-  let node = bst;
-  let secondLargestValue = bst.left.value || bst.value;
-
-  while (node.right) {
-    secondLargestValue = node.value;
-    node = node.right;
-  }
-
-  if (node.left) {
-    node = node.left;
-    secondLargestValue = node.value;
-    while (node.right) {
-      node = node.right;
-      secondLargestValue = node.value;
-    }
-  } else {
-    return secondLargestValue;
-  }
-
-  console.log(secondLargestValue)
 }
 
 secondLargest(bst);
