@@ -1,0 +1,25 @@
+{
+  "name": "interview-cake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "coins.js",
+  "scripts": {
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saltyandsmiling/algorithms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saltyandsmiling/algorithms/issues"
+  },
+  "homepage": "https://github.com/saltyandsmiling/algorithms#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0"
+  }
+}
