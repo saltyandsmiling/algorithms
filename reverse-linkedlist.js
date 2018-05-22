@@ -26,8 +26,8 @@ first node.next gets set to null (instantiated)
 function reverseLinkedList(firstNode) {
   if (!firstNode.next) throw new Error('LinkedList must have two nodes');
 
-  let prevNode = firstNode;
   let currentNode = firstNode.next;
+  let prevNode = firstNode;
   let nextNode = firstNode.next.next;
   prevNode.next = null;
 
