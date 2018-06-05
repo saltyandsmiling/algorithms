@@ -1,27 +1,21 @@
-const string = 'cat';
+const str = 'abc';
 
 function getPermutations(string) {
-  // base case
-  if (string.length <= 1) {
-    return new Set(string);
-  }
+  if (string.length <= 1) return new Set(string);
 
-  const allCharsExceptLast = string.slice(0, -1);
+  const allCharExceptLast = string.slice(0, -1);
   const lastChar = string[string.length - 1];
-  // console.log(allCharsExceptLast)
-  // recursive call: get all possible permutations for all chars except last
-  const permutationsOfAllCharsExceptLast = getPermutations(allCharsExceptLast);
 
-  // put the last char in all possible positions for each of the above permutations
-  const permutations = new Set();
-  permutationsOfAllCharsExceptLast.forEach((el) => {
-    console.log(el, allCharsExceptLast, lastChar);
-    for (let position = 0; position <= allCharsExceptLast.length; position += 1) {
-      const permutation = el.slice(0, position) + lastChar + el.slice(position);
-      permutations.add(permutation);
+  const perms = getPermutations(allCharExceptLast);
+
+  const permSet = new Set();
+  perms.forEach((el) => {
+    for (let i = 0; i <= allCharExceptLast.length; i += 1) {
+      const currentPerm = el.slice(0, i) + lastChar + el.slice(i);
+      permSet.add(currentPerm);
     }
   });
-  return permutations;
+  return permSet;
 }
 
-console.log(getPermutations(string));
+console.log(getPermutations(str));
